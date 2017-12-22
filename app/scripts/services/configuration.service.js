@@ -2,7 +2,7 @@
 angular.module('iaw2017App')
     .service('Configuration', [ function () {
         var configurations = {
-            baseURL: "http://localhost:3000/api/v1"
+            baseURL: "https://iawbackend.herokuapp.com/api/v1"
         };
 
         this.getConfiguration = function() {
