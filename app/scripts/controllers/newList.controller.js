@@ -32,7 +32,7 @@ angular.module('iaw2017App')
                 });
                 $scope.list.contacts = contactsSelected;
                 $scope.list.email = $scope.currentUser.email;
-                ListService.createList($scope.list).then(function() {
+                ListService.createList($scope.list, UserService.getToken()).then(function() {
                     $location.path('/lists');
                 });
             }
