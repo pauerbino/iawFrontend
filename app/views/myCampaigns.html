@@ -1,7 +1,9 @@
 <div class="campaigns" id="campaigns">
     <div class="my-header">
         <h2 class="align-center margin-auto" > My Campaigns </h2>
-        <h3 ng-if="campaigns.length < 3 || currentUser.premium" class="glyphicon glyphicon-plus new-icon" aria-hidden="true" ng-click="goToNewCampaign()"></h3>
+        <div ng-show="(campaigns.length < 3 && !currentUser.premium)||(currentUser.premium)">
+            <h3 class="glyphicon glyphicon-plus new-icon" aria-hidden="true" ng-click="goToNewCampaign()"></h3>
+        </div>
     </div>
     <table class="table table-bordered">
       <tr>
@@ -12,7 +14,7 @@
       </tr>
       <tr ng-repeat="campaign in campaigns">
         <td> {{campaign.title}} </td>
-        <td> {{}} % </td>
+        <td> {{((campaign.mails | filter:mailsFilter).length * 100) / campaign.mails.length | number:2}} % </td>
         <td> <a ng-click="goToStatistics(campaign._id)">Show statistics</a> </td>
         <td>
             <span class="glyphicon glyphicon-edit  edit-icon"  ng-click="editCampaign(campaign._id)"></span>

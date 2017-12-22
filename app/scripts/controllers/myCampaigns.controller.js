@@ -13,13 +13,15 @@ angular.module('iaw2017App')
     function initialize() {
         if (UserService.isLoggedIn()) {
             $scope.currentUser = UserService.currentUser();
+            CampaignService.reset();
+                CampaignService.getCampaigns($scope.currentUser.email).then(function (campaigns){
+                    $scope.campaigns = campaigns;
+                });
             UserService.getPremium($scope.currentUser.email).then(function(response){
                 $scope.currentUser.premium = response.premium;
             });
-            CampaignService.reset();
-            CampaignService.getCampaigns($scope.currentUser.email).then(function (campaigns){
-                $scope.campaigns = campaigns;
-            });
+            console.log($scope.campaigns);
+            console.log($scope.currentUser);
         }
         else {
             $location.path('/forbiddenAccess');
@@ -27,6 +29,10 @@ angular.module('iaw2017App')
     }
 
     initialize();
+
+    $scope.mailsFilter = function(object) {
+        return object.open === true;
+    }
 
     $scope.deleteCampaign = function(campaignId) {
         CampaignService.deleteCampaign(campaignId).then(function (){
