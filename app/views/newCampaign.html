@@ -1,0 +1,52 @@
+<h2 class="align-center"> New Campaign </h2>
+<div>
+    <form class="align-center form-margin" name="newCampaignForm" novalidate>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group" ng-class="{'has-error':newCampaignForm.title.$invalid && newCampaignForm.$submitted}">
+                    <label for="title"> Title *</label>
+                    <input type="text" class="form-control" name="title" ng-model="campaign.title" required>
+                    <p ng-show="newCampaignForm.title.$invalid && newCampaignForm.$submitted" class="help-block">The title is required.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject"> Subject</label>
+                    <input type="text" class="form-control" name="subject" ng-model="campaign.subject" required>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error':newCampaignForm.from.$invalid && newCampaignForm.$submitted}">
+                    <label for="from"> From *</label>
+                    <input type="email" class="form-control" name="from" ng-model="campaign.from" required>
+                    <p ng-show="newCampaignForm.from.$invalid && newCampaignForm.$submitted" class="help-block">Enter a valid email.</p>
+                </div>
+
+                <div class="form-group" ng-class="{'has-error':newCampaignForm.to.$invalid && newCampaignForm.$submitted}">
+                    <label for="to"> To *</label>
+                    <select class="form-control" ng-model="selectedListId" required>
+                        <option ng-repeat="list in lists" value={{list._id}}>{{list.name}}</option>
+                    </select>
+                    <a href="#!/newList" ng-click="">New List</a>
+                    <p ng-show="newCampaignForm.to.$invalid && newCampaignForm.$submitted" class="help-block">This field is required.</p>
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <label for="content">Content</label>
+                    <textarea ng-model="campaign.content" class="form-control" name="content" rows="12" cols="50">
+                    </textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-warning btn-form" ng-click="newCampaign(campaign)"> Create and Send </button>
+                    <button class="btn btn-default btn-form" ng-click="goBack()"> Back </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+

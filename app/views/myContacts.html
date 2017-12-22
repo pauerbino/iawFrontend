@@ -1,0 +1,26 @@
+<div class="contacts">
+    <div class="my-header">
+        <h2 class="align-center margin-auto" > My Contacts </h2>
+        <h3 class="glyphicon glyphicon-plus new-icon" aria-hidden="true" ng-click="goToNewContact()"></h3>
+    </div>
+    <table class="table table-bordered" name="contactsTable">
+      <tr>
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Options</th>
+      </tr>
+      <tr ng-repeat="contact in contacts">
+        <td> {{contact.name}} </td>
+        <td name="lastName"> {{contact.lastName}} </td>
+        <td> {{contact.email}} </td>
+        <td> {{contact.phone}} </td>
+        <td>
+            <span class="glyphicon glyphicon-edit edit-icon"  ng-click="editContact(contact._id)"></span>
+            <span class="glyphicon glyphicon-remove delete-icon" ng-click="deleteContact(contact._id)"></span>
+        </td>
+      </tr>
+    </table>
+
+</div>

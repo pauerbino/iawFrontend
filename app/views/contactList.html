@@ -1,0 +1,24 @@
+<div class="contacts">
+    <div class="my-header">
+        <h2 class="align-center margin-auto" > {{list.name}} </h2>
+        <h3 class="glyphicon glyphicon-edit edit-icon" ng-click="editList()"></h3>
+        <h3 class="glyphicon glyphicon-remove delete-icon" ng-click="deleteList()"></h3>
+    </div>
+
+    <table class="table table-bordered">
+      <tr>
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+      </tr>
+      <tr ng-repeat="contact in list.contacts">
+        <td> {{contact.name}} </td>
+        <td> {{contact.lastName}} </td>
+        <td> {{contact.email}} </td>
+        <td> {{contact.phone}} </td>
+      </tr>
+    </table>
+    <button class="btn btn-default float" ng-click="goBack()"> Back </button>
+
+</div>

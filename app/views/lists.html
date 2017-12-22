@@ -1,0 +1,17 @@
+<div class="lists">
+    <div class="my-header">
+        <h2 class="align-center margin-auto" > My Lists </h2>
+        <h3 class="glyphicon glyphicon-plus new-icon" aria-hidden="true" ng-click="goToNewList()"></h3>
+    </div>
+
+    <div ng-repeat="list in lists">
+        <a class="list-group-item list-group-item-action" data-toggle="list" role="tab" ng-click="goToList(list)">
+            {{list.name}}
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <!-- <button type="btn btn-warning" >New List</button> -->
+    <!-- <button ng-click="goToNewContact()">New Contact</button> -->
+
+</div>

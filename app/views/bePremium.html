@@ -1,0 +1,38 @@
+<h2 class="align-center"> Be Premium </h2>
+<!--
+<div id="paypal-button"></div>
+
+<script>
+     paypal.Button.render({
+
+        env: 'sandbox',
+        client: {
+            sandbox:    'AaexcTf1YLaokQ0wVax2oAbvlsvt2AucEXajnNkS5zzBb1Lb-HNaPIOLVf_jmqgxIY9S64z7l32-yRBa',
+            production: 'xxxxxxxxx'
+        },
+
+        commit: true, // Show a 'Pay Now' button
+
+        payment: function(data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: '1.00', currency: 'USD' }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function(payment) {
+
+                // The payment is complete!
+                // You can now show a confirmation message to the customer
+            });
+        }
+
+    }, '#paypal-button');
+</script>
+ -->

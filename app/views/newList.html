@@ -1,0 +1,32 @@
+<h2 class="align-center"> New List </h2>
+<div>
+    <form class="align-center form-margin" name="newListForm" novalidate>
+        <div class="row">
+            <div class="col-xs-6">
+                <div class="form-group" ng-class="{'has-error':newListForm.email.$invalid && newListForm.$submitted}" >
+                    <label for="name"> List Name </label>
+                    <input type="text" class="form-control" name="listName" ng-model="list.name" required>
+                    <p ng-show="newListForm.name.$invalid && newListForm.$submitted" class="help-block">The list name is required.</p>
+                </div>
+                <h4> List Contacts: </h4>
+                <div ng-repeat="contact in allContacts">
+                    <p ng-if="contact.checked">{{contact.name}} {{contact.lastName}} ({{contact.email}})</p>
+                </div>
+                <button  type="submit" class="btn btn-warning btn-form" ng-click="createList()"> Create </button>
+                <button class="btn btn-default btn-form" ng-click="goBack()"> Back </button>
+            </div>
+            <div class="col-xs-6">
+
+                <label for="contactName"> Search Contacts </label>
+                <input class="form-control" type="text" name="contactName" ng-model="searchText">
+                <div ng-repeat="contact in allContacts|filter:searchText" class="checkbox-container">
+                    <input type="checkbox" ng-model="contact.checked" class="checkbox-contact" name="checkbox-contact" placeholder="Search for name, email or tags">
+                    <label for="checkbox-contact">
+                        {{contact.name}} {{contact.lastName}} ({{contact.email}})
+                    </label>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
