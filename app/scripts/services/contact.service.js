@@ -1,6 +1,6 @@
 'use strict';
 angular.module('iaw2017App')
-    .service('ContactService', ['$http', '$q', 'Configuration', function ($http, $q, Configuration) {
+    .service('ContactService', ['$http', '$q', 'Configuration', 'UserService', function ($http, $q, Configuration, UserService) {
 
         var service = {};
 
@@ -79,7 +79,8 @@ angular.module('iaw2017App')
             } else {
                $http({
                     method: 'GET',
-                    url: Configuration.getConfiguration().baseURL + '/contacts/' + email
+                    url: Configuration.getConfiguration().baseURL + '/contacts/' + email,
+                    headers: {'x-access-token': UserService.getToken()}
                 }).then(function (response) {
                     cache.contacts = response.data;
                     deferred.resolve(response.data);
@@ -96,7 +97,8 @@ angular.module('iaw2017App')
 
            $http({
                 method: 'GET',
-                url: Configuration.getConfiguration().baseURL + '/contacts/' + id + '/' + email
+                url: Configuration.getConfiguration().baseURL + '/contacts/' + id + '/' + email,
+                headers: {'x-access-token': UserService.getToken()}
             }).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (response) {
@@ -111,6 +113,7 @@ angular.module('iaw2017App')
            $http({
                 method: 'PUT',
                 url: Configuration.getConfiguration().baseURL + '/contacts/' + contact._id,
+                headers: {'x-access-token': UserService.getToken()},
                 data: contact
             }).then(function (response) {
                 deferred.resolve(response.data);
@@ -127,6 +130,7 @@ angular.module('iaw2017App')
             $http({
                 method : 'POST',
                 url : Configuration.getConfiguration().baseURL + '/contacts',
+                headers: {'x-access-token': UserService.getToken()},
                 data: contact
             }).then(function(response) {
                 deferred.resolve(response);
@@ -159,7 +163,8 @@ angular.module('iaw2017App')
 
             $http({
                 method: 'DELETE',
-                url: Configuration.getConfiguration().baseURL + '/contacts/' + id
+                url: Configuration.getConfiguration().baseURL + '/contacts/' + id,
+                headers: {'x-access-token': UserService.getToken()}
             }).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (response) {

@@ -12,7 +12,7 @@ angular.module('iaw2017App')
         if (UserService.isLoggedIn()) {
             $scope.currentUser = UserService.currentUser();
             ListService.reset();
-            ListService.getLists($scope.currentUser.email, UserService.getToken()).then(function (lists){
+            ListService.getLists($scope.currentUser.email).then(function (lists){
                 console.log($scope.lists);
                 $scope.lists = lists;
             });

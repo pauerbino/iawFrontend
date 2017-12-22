@@ -1,6 +1,6 @@
 'use strict';
 angular.module('iaw2017App')
-    .service('CampaignService', ['$http', '$q', 'Configuration', function ($http, $q, Configuration) {
+    .service('CampaignService', ['$http', '$q', 'Configuration', 'UserService', function ($http, $q, Configuration, UserService) {
 
         var service = {};
 
@@ -22,7 +22,8 @@ angular.module('iaw2017App')
             } else {
                $http({
                     method: 'GET',
-                    url: Configuration.getConfiguration().baseURL + '/campaigns/' + email
+                    url: Configuration.getConfiguration().baseURL + '/campaigns/' + email,
+                    headers: {'x-access-token': UserService.getToken()}
                 }).then(function (response) {
                     cache.campaigns = response.data;
                     deferred.resolve(response.data);
@@ -38,7 +39,8 @@ angular.module('iaw2017App')
             var deferred = $q.defer();
             $http({
                 method: 'GET',
-                url: Configuration.getConfiguration().baseURL + '/campaigns/' + id + '/' + email
+                url: Configuration.getConfiguration().baseURL + '/campaigns/' + id + '/' + email,
+                headers: {'x-access-token': UserService.getToken()}
             }).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (response) {
@@ -53,6 +55,7 @@ angular.module('iaw2017App')
             $http({
                 method : 'POST',
                 url : Configuration.getConfiguration().baseURL + '/campaigns',
+                headers: {'x-access-token': UserService.getToken()},
                 data: campaign
             }).then(function(response) {
                 deferred.resolve(response);
@@ -70,6 +73,7 @@ angular.module('iaw2017App')
             $http({
                 method : 'PUT',
                 url : Configuration.getConfiguration().baseURL + '/campaigns/' + id,
+                headers: {'x-access-token': UserService.getToken()},
                 data: campaign
             }).then(function(response) {
                 deferred.resolve(response);
@@ -85,7 +89,8 @@ angular.module('iaw2017App')
 
             $http({
                 method: 'DELETE',
-                url: Configuration.getConfiguration().baseURL + '/campaigns/' + id
+                url: Configuration.getConfiguration().baseURL + '/campaigns/' + id,
+                headers: {'x-access-token': UserService.getToken()}
             }).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (response) {
