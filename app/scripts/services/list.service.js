@@ -1,6 +1,6 @@
 'use strict';
 angular.module('iaw2017App')
-    .service('ListService', ['$http', '$q', 'Configuration', 'UserService' function ($http, $q, Configuration, UserService) {
+    .service('ListService', ['$http', '$q', 'Configuration', 'UserService', function ($http, $q, Configuration, UserService) {
         var service = {};
         var cache = {
             lists: null
