@@ -1,6 +1,6 @@
 'use strict';
 angular.module('iaw2017App')
-    .service('ListService', ['$http', '$q', 'Configuration', function ($http, $q, Configuration) {
+    .service('ListService', ['$http', '$q', 'Configuration', 'UserService' function ($http, $q, Configuration, UserService) {
         var service = {};
         var cache = {
             lists: null
@@ -20,7 +20,7 @@ angular.module('iaw2017App')
                 $http({
                     method: 'GET',
                     url: Configuration.getConfiguration().baseURL + '/lists/' + email,
-                    headers: {'x-access-token': token}
+                    headers: {'x-access-token': UserService.getToken()}
                 }).then(function (response) {
                     cache.lists = response.data;
                     deferred.resolve(response.data);
@@ -37,7 +37,7 @@ angular.module('iaw2017App')
             $http({
                 method: 'GET',
                 url: Configuration.getConfiguration().baseURL + '/lists/' + id + '/' + email,
-                headers: {'x-access-token': token}
+                headers: {'x-access-token': UserService.getToken()}
             }).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (response) {
@@ -53,7 +53,7 @@ angular.module('iaw2017App')
             $http({
                 method: 'DELETE',
                 url: Configuration.getConfiguration().baseURL + '/lists/' + id,
-                headers: {'x-access-token': token}
+                headers: {'x-access-token': UserService.getToken()}
             }).then(function (response) {
                 deferred.resolve(response.data);
             }).catch(function (response) {
@@ -72,7 +72,7 @@ angular.module('iaw2017App')
            $http({
                 method: 'PUT',
                 url: Configuration.getConfiguration().baseURL + '/lists/' + list._id,
-                headers: {'x-access-token': token},
+                headers: {'x-access-token': UserService.getToken()},
                 data: list
             }).then(function (response) {
                 deferred.resolve(response.data);
@@ -89,7 +89,7 @@ angular.module('iaw2017App')
             $http({
                 method : 'POST',
                 url : Configuration.getConfiguration().baseURL + '/lists',
-                headers: {'x-access-token': token},
+                headers: {'x-access-token': UserService.getToken()},
                 data: list
             }).then(function(response) {
                 deferred.resolve(response);
