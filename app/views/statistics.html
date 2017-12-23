@@ -1,52 +1,54 @@
 <div class="statistics">
     <h2 class="align-center">{{campaign.title}}</h2>
-    <canvas id="pieChart"></canvas>
+    <canvas ng-if="valuesSet" id="pieChart"></canvas>
     <button class="btn btn-default statistics-button" ng-click="goBack()"> Back </button>
 </div>
 <script type="text/javascript">
-    $( document ).ready(function() {
-        var ctxP = document.getElementById("pieChart").getContext('2d');
-        var v3 = [];
-        if (window.data) {
-		
-		} 
-		else {
-		    window.data = [ 0 , 0];
-		}
-        //window.data = {value1: 0, value2: 0};
-        //if (window.data) {
-       	//	window.data[0].watch('value1', function (id, oldval, newval) {
-		 // 		v3[0] = newval;
-		//	});
-		//	window.data.watch('value2', function (id, oldval, newval) {
-		//		v3[1] = newval;
-		//	});
-        //     v1 = window.data[0];
-        //     v2 = window.data[1];
-         //  window.data = [];
-        //}
-        //else {
-        //	window.data = {value1: 0, value2: 0};
-        //}
-      //  var v1 = window.localStorage['mailsTotal'];
-      //  var v2 = window.localStorage['mailsOpened'];
-        
-        var myPieChart = new Chart(ctxP, {
-           type: 'pie',
-            data: {
-                labels: ["No Abiertos", "Abiertos"],
-                datasets: [
-                    {
-                        data: window.data,
-                        backgroundColor: ["#F7464A", "#FDB45C"],
-                        hoverBackgroundColor: ["#FF5A5E", "#FFC870"]
-                    }
-                ]
-            },
-            options: {
-                responsive: true
-            }
-        });
-    });
+	$( document ).ready(function() {
+		document.getElementById("pieChart").ready(function() {
+	        var ctxP = document.getElementById("pieChart").getContext('2d');
+	        var v3 = [];
+	        if (window.data) {
+			
+			} 
+			else {
+			    window.data = [ 0 , 0];
+			}
+	        //window.data = {value1: 0, value2: 0};
+	        //if (window.data) {
+	       	//	window.data[0].watch('value1', function (id, oldval, newval) {
+			 // 		v3[0] = newval;
+			//	});
+			//	window.data.watch('value2', function (id, oldval, newval) {
+			//		v3[1] = newval;
+			//	});
+	        //     v1 = window.data[0];
+	        //     v2 = window.data[1];
+	         //  window.data = [];
+	        //}
+	        //else {
+	        //	window.data = {value1: 0, value2: 0};
+	        //}
+	      //  var v1 = window.localStorage['mailsTotal'];
+	      //  var v2 = window.localStorage['mailsOpened'];
+	        
+	        var myPieChart = new Chart(ctxP, {
+	           type: 'pie',
+	            data: {
+	                labels: ["No Abiertos", "Abiertos"],
+	                datasets: [
+	                    {
+	                        data: window.data,
+	                        backgroundColor: ["#F7464A", "#FDB45C"],
+	                        hoverBackgroundColor: ["#FF5A5E", "#FFC870"]
+	                    }
+	                ]
+	            },
+	            options: {
+	                responsive: true
+	            }
+	        });
+	    });
+	});
 
 </script>

@@ -10,6 +10,8 @@ angular.module('iaw2017App')
         }
        // $window.data = [];
         $scope.opened = 0;
+        $scope.valuesSet = false;
+
 
         function initialize() {
             if (UserService.isLoggedIn()) {
@@ -31,11 +33,13 @@ angular.module('iaw2017App')
                     if ($window.data) {
                         $window.data[0] = $scope.campaign.mails.length - $scope.opened;
                         $window.data[1] = $scope.opened;
+                        $scope.valuesSet = true;
                     }
                     else {
                         $window.data = [0, 0];
                         $window.data[0] = $scope.campaign.mails.length - $scope.opened;
                         $window.data[1] = $scope.opened;
+                        $scope.valuesSet = true;
                     }
                 });
             }
