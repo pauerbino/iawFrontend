@@ -31,8 +31,8 @@ angular.module('iaw2017App')
             $scope.currentUser = UserService.currentUser();
             ListService.getLists($scope.currentUser.email).then(function (lists){
                 CampaignService.getCampaign($routeParams.id, $scope.currentUser.email).then(function (campaign){
-                    $scope.campaign = campaign;
-                    $scope.campaignToSave = angular.copy(campaign);
+                    $scope.campaign = campaign[0];
+                    $scope.campaignToSave = angular.copy(campaign[0]);
                     $scope.selectedListId = campaign.list;
                     $scope.lists = lists;
                 });
