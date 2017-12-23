@@ -15,13 +15,13 @@ angular.module('iaw2017App')
             if (UserService.isLoggedIn()) {
                 $scope.currentUser = UserService.currentUser();
                 CampaignService.getCampaign($routeParams.id, $scope.currentUser.email).then(function (campaign){
-                    $scope.campaign = campaign;
-                    for (var i = 0; i < campaign.mails.length; i++) {
-                        if (campaign.mails[i].open) {
+                    $scope.campaign = campaign[0];
+                    for (var i = 0; i < $scope.campaign.mails.length; i++) {
+                        if ($scope.campaign.mails[i].open) {
                             $scope.opened ++;
                         }
                     }
-                    $window.data = [ campaign.mails.length, $scope.opened]
+                    $window.data = [ $scope.campaign.mails.length, $scope.opened]
                 });
             }
             else {
