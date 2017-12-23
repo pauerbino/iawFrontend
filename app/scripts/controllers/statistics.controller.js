@@ -23,6 +23,8 @@ angular.module('iaw2017App')
                     }
                    // $window.data = [ $scope.campaign.mails.length, $scope.opened];
                     //$window.data = [];
+                    window.localStorage['mailsTotal'] = $scope.campaign.mails.length;
+                    window.localStorage['mailsOpened'] = $scope.opened;
                     $window.data.push($scope.campaign.mails.length);
                     $window.data.push($scope.opened);
                     console.log($window.data);

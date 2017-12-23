@@ -13,14 +13,15 @@
         //     v2 = window.data[1];
          //  window.data = [];
         // }
-        console.log(window.data);
+        var v1 = window.localStorage['mailsTotal'];
+        var v2 = window.localStorage['mailsOpened'];
         var myPieChart = new Chart(ctxP, {
            type: 'pie',
             data: {
                 labels: ["No Abiertos", "Abiertos"],
                 datasets: [
                     {
-                        data: [window.data[0], window.data[1]],
+                        data: [v1, v2],
                         backgroundColor: ["#F7464A", "#FDB45C"],
                         hoverBackgroundColor: ["#FF5A5E", "#FFC870"]
                     }
