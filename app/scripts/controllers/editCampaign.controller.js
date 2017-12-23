@@ -33,7 +33,7 @@ angular.module('iaw2017App')
                 CampaignService.getCampaign($routeParams.id, $scope.currentUser.email).then(function (campaign){
                     $scope.campaign = campaign[0];
                     $scope.campaignToSave = angular.copy(campaign[0]);
-                    $scope.selectedListId = campaign.list;
+                    $scope.selectedListId = campaign[0].list;
                     $scope.lists = lists;
                 });
             });
