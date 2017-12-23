@@ -6,13 +6,21 @@
 <script type="text/javascript">
     $( document ).ready(function() {
         var ctxP = document.getElementById("pieChart").getContext('2d');
+        // var v1 = 0;
+        // var v2 = 0;
+        // if (window.data) {
+        //     v1 = window.data[0];
+        //     v2 = window.data[1];
+         //  window.data = [];
+        // }
+        console.log(window.data);
         var myPieChart = new Chart(ctxP, {
-            type: 'pie',
+           type: 'pie',
             data: {
                 labels: ["No Abiertos", "Abiertos"],
                 datasets: [
                     {
-                        data:window.data,
+                        data: [window.data[0], window.data[1]],
                         backgroundColor: ["#F7464A", "#FDB45C"],
                         hoverBackgroundColor: ["#FF5A5E", "#FFC870"]
                     }

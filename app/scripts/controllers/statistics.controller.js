@@ -8,7 +8,7 @@ angular.module('iaw2017App')
             email : "",
             name : ""
         }
-        $window.data =[0, 0];
+        $window.data = [];
         $scope.opened = 0;
 
         function initialize() {
@@ -21,7 +21,11 @@ angular.module('iaw2017App')
                             $scope.opened ++;
                         }
                     }
-                    $window.data = [ $scope.campaign.mails.length, $scope.opened]
+                   // $window.data = [ $scope.campaign.mails.length, $scope.opened];
+                    //$window.data = [];
+                    $window.data.push($scope.campaign.mails.length);
+                    $window.data.push($scope.opened);
+                    console.log($window.data);
                 });
             }
             else {
