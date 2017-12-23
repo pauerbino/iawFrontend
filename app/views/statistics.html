@@ -1,11 +1,10 @@
 <div class="statistics">
     <h2 class="align-center">{{campaign.title}}</h2>
-    <canvas ng-if="valuesSet" id="pieChart"></canvas>
+    <canvas ng-show="valuesSet" id="pieChart"></canvas>
     <button class="btn btn-default statistics-button" ng-click="goBack()"> Back </button>
 </div>
 <script type="text/javascript">
 	$( document ).ready(function() {
-		document.getElementById("pieChart").ready(function() {
 	        var ctxP = document.getElementById("pieChart").getContext('2d');
 	        var v3 = [];
 	        if (window.data) {
@@ -48,7 +47,6 @@
 	                responsive: true
 	            }
 	        });
-	    });
 	});
 
 </script>
